@@ -47,6 +47,17 @@ describe("<Display />", () => {
     });
   });
 
+  describe("foul button", () => {
+    it("should select the foul button", () => {
+      const { getByTestId } = render(<Dashboard />, <Display />);
+
+      const button = getByTestId("foul-button");
+      const foulTotal = getByTestId("foul-total");
+      fireEvent.click(button);
+      expect(foulTotal).toHaveTextContent(1);
+    });
+  });
+
   describe("balls should not be > 4", () => {
     it("should not be greater than 4", () => {
       const { getByTestId } = render(<Display />);
