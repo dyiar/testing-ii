@@ -9,11 +9,17 @@ class Display extends React.Component {
 
     handleBalls = event => {
         event.preventDefault();
-        console.log('hello')
         this.setState({ 
             balls: this.state.balls + 1
         })
         
+    }
+
+    handleStrikes = event => {
+        event.preventDefault();
+        this.setState({
+            strikes: this.state.strikes + 1
+        })
     }
 
     
@@ -21,11 +27,14 @@ class Display extends React.Component {
     render() {
         return (
             <>
+            <div data-testid="hello">Hello! Welcome to the Ball Park!</div>
+            <div data-testid="balls-total">Balls: {this.state.balls}</div>
+            <div data-testid="strike-total">Strikes: {this.state.strikes}</div>
             <Dashboard
             balls={this.state.balls}
-            handleBalls={this.handleBalls} />
-            <div data-testid="hello">Hello</div>
-            <div data-testid="balls-total">{this.state.balls}</div>
+            handleBalls={this.handleBalls}
+            strikes={this.state.strikes}
+            handleStrikes={this.handleStrikes} />
             </>
         )
     }

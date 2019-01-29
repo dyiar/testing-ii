@@ -25,5 +25,16 @@ describe('<Display />', () => {
     })
   })
 
+  describe('strike button', () => {
+    it('should select the strike button', () => {
+      const { getByTestId } = render(<Dashboard />, <Display />)
+
+      const button = getByTestId('strike-button');
+      const strikeTotal = getByTestId('strike-total');
+      fireEvent.click(button)
+      expect(strikeTotal).toHaveTextContent(1)
+    })
+  })
+
 
 })
